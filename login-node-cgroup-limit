@@ -1,0 +1,13 @@
+mkdir -p /etc/systemd/system/user-.slice.d/
+cat <<EOF >/etc/systemd/system/user-.slice.d/10-resource-limits.conf
+[Slice]
+CPUQuota=200%
+MemoryMax=8G
+IOReadBandwidthMax=/dev/sda 50M
+IOWriteBandwidthMax=/dev/sda 20M
+EOF
+
+echo "DefaultControllers=cpu io memory pids" >> /etc/systemd/system.conf
+
+systemctl daemon-reexec
+systemctl daemon-reload
