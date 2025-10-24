@@ -1,0 +1,2 @@
+0 0 * * * sudo sync; echo 3 > /proc/sys/vm/drop_caches; /usr/sbin/swapoff -a; /usr/sbin/swapon -a
+0 7 * * * sudo sync; echo 3 > /proc/sys/vm/drop_caches; /usr/sbin/swapoff -a; /usr/sbin/swapon -a
